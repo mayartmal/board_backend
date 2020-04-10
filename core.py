@@ -1,6 +1,5 @@
 import business_objects
 
-
 def main():
 
 	es1 = business_objects.Estimation("1m", "3w", "1d", "2h")
@@ -10,9 +9,5 @@ def main():
 	print(es1.get_estimation_value())
 	print(es2.get_estimation_value())
 	print(es_r.get_estimation_value())
-
-
-
-
 
 main()			

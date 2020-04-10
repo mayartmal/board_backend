@@ -3,7 +3,6 @@ class Estimation(object):
 	week_2_hour_coef = 40
 	month_2_hour_coef = 160
 
-
 	def __init__(self, m, w, d, h):
 		super(Estimation, self).__init__()
 		self.m = None
@@ -16,24 +15,17 @@ class Estimation(object):
 		self.set_h(h)
 		self._total_h = self.h + (self.d) * self.day_2_hour_coef + (self.w) * self.week_2_hour_coef + (self.m) * self.month_2_hour_coef
 
-
 	def __add__(self, additional_estimation):
 		result_estimation = Estimation("0m", "0w", "0d", "0h")
 		result_estimation._total_h = self._total_h + additional_estimation._total_h
-		
 		result_estimation.m = result_estimation._total_h // self.month_2_hour_coef
 		hours_transfert = result_estimation._total_h % self.month_2_hour_coef
-		
 		result_estimation.w = hours_transfert // self.week_2_hour_coef
 		hours_transfert = hours_transfert % self.week_2_hour_coef
-
 		result_estimation.d = hours_transfert // self.day_2_hour_coef
 		hours_transfert = hours_transfert % self.day_2_hour_coef
-
 		result_estimation.h = hours_transfert
-		
 		return result_estimation
-
 
 	def get_estimation_value(self):
 		estimation_value = self.get_m() + self.get_w() + self.get_d() + self.get_h()
@@ -63,9 +55,6 @@ class Estimation(object):
 	def get_h(self):
 		timed_h = self.__universal_get(self.h, "h")
 		return timed_h
-
-
-
 
 	def __universal_set(self, time_value, time_base):
 		if (str(type(time_value)) == "<class 'str'>") & ((time_value[-1] == time_base)):
